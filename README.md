@@ -3,9 +3,18 @@
 DBMS coursework repository.
 
 ## Structure
-- `homework/hw1/` ... `homework/hwN/` — homework materials grouped by homework number
-- `lab/lab1/` ... `lab/labN/` — lab materials grouped by lab number
 - `LLM Gateway project/` — project materials for the LLM Gateway / API Gateway work
+- `homework/hw1/` — Homework 1 materials
+- `homework/hw2/` — Homework 2 materials
+- `homework/hw3/` — Homework 3 materials
+- `homework/hw4/` — Homework 4 materials
+- `homework/hw5/` — Homework 5 advanced SQL materials
+- `homework/hw7/` — Homework 7 relational algebra and triggers materials
+- `homework/midterm/` — Midterm mock and answer materials
+- `homework/project/` — DBMS course project deliverables
+- `homework/slides/` — Course lecture slides and notes
+- `homework/resources/` — Supporting DBMS reference assets
+- `lab/lab2/` — Lab 2 materials
+- `lab/lab5/` — Lab 5 SQL files and related DBMS lab work
 
-## Convention
-Coursework is organized by numbered buckets such as `homework/hw1`, `homework/hw2`, ... and `lab/lab1`, `lab/lab2`, ... whenever the source materials are available.
+
