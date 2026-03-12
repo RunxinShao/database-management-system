@@ -1,0 +1,6 @@
+ALTER TABLE sc
+DROP FOREIGN KEY sc_sno_fk;
+
+
+
+

@@ -1,0 +1,24 @@
+select sname from student;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

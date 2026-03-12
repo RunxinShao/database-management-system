@@ -1,0 +1,11 @@
+ALTER TABLE Persons 
+MODIFY COLUMN City VARCHAR(255) DEFAULT 'SANDNES';
+
+
+
+
+
+
+
+
+

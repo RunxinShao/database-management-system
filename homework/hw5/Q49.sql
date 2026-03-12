@@ -1,0 +1,30 @@
+SELECT sno FROM sc GROUP BY sno HAVING count(cno)>1;
+SELECT sno FROM sc GROUP BY sno HAVING count(sno)>1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

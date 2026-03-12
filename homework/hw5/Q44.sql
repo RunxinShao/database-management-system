@@ -1,0 +1,27 @@
+SELECT ssex,count(*)FROM student GROUP BY ssex;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

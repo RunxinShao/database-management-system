@@ -1,0 +1,27 @@
+SELECT cno,count(sno)FROM sc GROUP BY cno;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

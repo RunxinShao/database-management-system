@@ -1,0 +1,26 @@
+SELECT a.* FROM sc a ,sc b WHERE a.score=b.score AND a.cno<>b.cno;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

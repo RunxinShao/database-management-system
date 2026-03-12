@@ -1,0 +1,30 @@
+SELECT sc.sno,c.cname,sc.score FROM sc,course c
+	WHERE sc.cno=c.cno AND sc.score<60 ORDER BY sc.cno desc;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
