@@ -1,0 +1,1 @@
+SELECT 	COUNT(DISTINCT salary) FROM 	employee;

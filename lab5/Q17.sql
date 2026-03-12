@@ -1,0 +1,3 @@
+SELECT  DISTINCT essn
+FROM  	works_on 
+WHERE  	pno IN (1,2,3);

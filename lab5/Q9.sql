@@ -1,0 +1,2 @@
+SELECT 	ssn
+  FROM 	employee;

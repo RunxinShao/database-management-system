@@ -1,0 +1,108 @@
+HOMEWORK 7 - EXERCISE 1: RELATIONAL ALGEBRA
+===========================================
+
+Hospital Management System Schema:
+- DOCTORS(ID, name, salary, phone, dname)
+- DOCTOR_SPECIAL(DID, special)
+- OPERATIONS(DID, Pnum, type, cond, date)
+- PATIENTS(Pnum, name, age, phone, address, CDID)
+- ADMITTED_PATIENTS(Pnum, date, room, cond)
+- REGULAR_PATIENTS(Pnum, datevisit, prescription, payment)
+- DEPARTMENTS(name, location, facility)
+
+Note: DID refers to Doctor ID, Pnum refers to Patient number,
+      dname refers to department name, CDID refers to Consulting Doctor ID
+
+===========================================
+QUERY 1: Get a list of average doctors' salary for each department
+===========================================
+
+γ dname, AVG(salary) (DOCTORS)
+
+Explanation:
+- Use grouping operator γ (gamma) to group by department name (dname)
+- Calculate AVG(salary) aggregation for each group
+- Result: (dname, AVG(salary))
+
+
+===========================================
+QUERY 2: Get a list of patients' names who are operated on by "Dr. Smith"
+         on the date "10-23-2022"
+===========================================
+
+π PATIENTS.name (
+    σ DOCTORS.name='Dr. Smith' ∧ OPERATIONS.date='10-23-2022' (
+        DOCTORS ⋈ DOCTORS.ID=OPERATIONS.DID OPERATIONS ⋈ OPERATIONS.Pnum=PATIENTS.Pnum PATIENTS
+    )
+)
+
+Alternative notation (step by step):
+
+Step 1: Select Dr. Smith from DOCTORS
+    DrSmith ← σ name='Dr. Smith' (DOCTORS)
+
+Step 2: Select operations on date 10-23-2022
+    OpsOnDate ← σ date='10-23-2022' (OPERATIONS)
+
+Step 3: Join doctors with operations
+    DoctorOps ← DrSmith ⋈ ID=DID OpsOnDate
+
+Step 4: Join with patients
+    DoctorOpsPatients ← DoctorOps ⋈ Pnum=Pnum PATIENTS
+
+Step 5: Project patient names
+    Result ← π PATIENTS.name (DoctorOpsPatients)
+
+Explanation:
+- Filter DOCTORS for "Dr. Smith"
+- Filter OPERATIONS for date "10-23-2022"
+- Join DOCTORS with OPERATIONS on DOCTORS.ID = OPERATIONS.DID
+- Join result with PATIENTS on OPERATIONS.Pnum = PATIENTS.Pnum
+- Project only patient names from PATIENTS table
+
+
+===========================================
+QUERY 3: Get a list of all doctors' names who do not have any patients
+===========================================
+
+π name (DOCTORS) - π DOCTORS.name (DOCTORS ⋈ ID=DID OPERATIONS ⋈ Pnum=Pnum PATIENTS)
+
+Alternative notation (step by step):
+
+Step 1: Get all doctor names
+    AllDoctors ← π name (DOCTORS)
+
+Step 2: Join doctors with operations and patients to find doctors with patients
+    DoctorsWithOps ← DOCTORS ⋈ ID=DID OPERATIONS
+
+Step 3: Join with patients
+    DoctorsWithPatients ← DoctorsWithOps ⋈ Pnum=Pnum PATIENTS
+
+Step 4: Project names of doctors who have patients
+    DoctorsHavingPatients ← π DOCTORS.name (DoctorsWithPatients)
+
+Step 5: Subtract to get doctors without patients
+    Result ← AllDoctors - DoctorsHavingPatients
+
+Explanation:
+- Get all doctor names from DOCTORS table
+- Find doctors who have performed operations by joining DOCTORS with OPERATIONS
+- Further join with PATIENTS to ensure operations were on actual patients
+- Project names of doctors with patients
+- Use set difference (-) to find doctors in all doctors but not in doctors with patients
+- Result: Doctors who have no patients
+
+Alternative approach using division or anti-join would also work, but set difference
+is the most straightforward for this query.
+
+
+===========================================
+SUMMARY OF RELATIONAL ALGEBRA OPERATORS USED:
+===========================================
+
+π   - Projection (select specific columns)
+σ   - Selection (filter rows based on condition)
+⋈   - Natural Join / Theta Join
+γ   - Grouping with aggregation
+-   - Set Difference
+∧   - Logical AND

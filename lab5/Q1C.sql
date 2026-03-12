@@ -1,0 +1,3 @@
+SELECT *
+FROM employee
+WHERE DNO = 5;

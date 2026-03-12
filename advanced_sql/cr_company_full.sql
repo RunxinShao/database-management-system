@@ -1,0 +1,112 @@
+SET FOREIGN_KEY_CHECKS=0;
+Drop table employee;
+Drop table department;
+Drop table dept_locations;
+Drop table dependent;
+Drop table project;
+Drop table works_on;
+SET FOREIGN_KEY_CHECKS=1;
+# Creating DEPARTMENT
+CREATE TABLE department
+(dnumber      INT(1) NOT NULL,
+dname        VARCHAR(15) NOT NULL,
+mgr_ssn       VARCHAR(9) NOT NULL,
+mgr_start_date DATE,
+PRIMARY KEY (dnumber),
+UNIQUE (dname));
+INSERT INTO department VALUES (5,'RESEARCH','333445555',NOW());
+INSERT INTO department VALUES (4,'ADMINISTRATION','987654321',NOW());
+INSERT INTO department VALUES (1,'HEADQUARTERS','888665555',NOW());
+# Creating EMPLOYEE
+CREATE TABLE employee  (fname      VARCHAR(8),
+minit       VARCHAR(2),
+lname     VARCHAR(8),  
+ssn    VARCHAR(9) NOT NULL,
+bdate       DATE,
+address    VARCHAR(27),
+sex       VARCHAR(1),
+salary INT(7) NOT NULL,
+super_ssn    VARCHAR(9),
+dno   INT(1) NOT NULL,
+PRIMARY KEY (SSN),
+FOREIGN KEY (dno) REFERENCES department (dnumber));
+INSERT INTO employee VALUES ('JOHN','B','SMITH','123456789',NOW(),'731 FONDREN, HOUSTON, TX','M',30000,'333445555',5);
+INSERT INTO employee VALUES ('FRANKLIN','T','WONG','333445555',NOW(),'638 VOSS,HOUSTON TX','M',40000,'888665555',5);
+INSERT INTO employee VALUES ('ALICIA','J','ZELAYA','999887777',NOW(),'3321 CASTLE, SPRING, TX','F',25000,'987654321',4);
+INSERT INTO employee VALUES ('JENNIFER','S','WALLACE','987654321',NOW(),'291 BERRY, BELLAIRE, TX','F',43000,'888665555',4);
+INSERT INTO employee VALUES ('RAMESH','K','NARAYAN','666884444',NOW(),'975 FIRE OAK, HUMBLE, TX','M',38000,'333445555',5);
+INSERT INTO employee VALUES ('JOYCE','A','ENGLISH','453453453',NOW(),'5631 RICE, HOUSTON, TX','F',25000,'333445555',5);
+INSERT INTO employee VALUES ('AHMAD','V','JABBAR','987987987',NOW(),'980 DALLAS, HOUSTON, TX','M',25000,'987654321',4);
+INSERT INTO employee VALUES ('JAMES','E','BORG','888665555',NOW(),'450 STONE, HOUSTON, TX','M',55000,NULL,1);
+ALTER TABLE department
+ADD FOREIGN KEY (mgr_ssn) REFERENCES employee (ssn);
+ALTER TABLE employee
+ADD FOREIGN KEY (super_ssn) REFERENCES employee (ssn);
+# Creating DEPENDENT
+create table dependent(
+essn	  VARCHAR(9) NOT NULL,
+dependent_name	  VARCHAR(15) NOT NULL,
+sex    VARCHAR(1),
+bdate	  date,
+relationship	  VARCHAR(8),
+PRIMARY KEY (essn, dependent_name),
+FOREIGN KEY (essn) REFERENCES employee (ssn));
+INSERT INTO dependent VALUES ('333445555','ALICE','F',NOW(),'DAUGHTER');
+INSERT INTO dependent VALUES ('333445555','THEODORE','M',NOW(),'SON');
+INSERT INTO dependent VALUES ('333445555','JOY','F',NOW(),'SPOUSE');
+INSERT INTO dependent VALUES ('123456789','MICHAEL','M',NOW(),'SON');
+INSERT INTO dependent VALUES ('123456789','ALICE','F',NOW(),'DAUGHTER');
+INSERT INTO dependent VALUES ('123456789','ELIZABETH','F',NOW(),'SPOUSE');
+INSERT INTO dependent VALUES ('987654321','ABNER','M',NOW(),'SPOUSE');
+# Creating DEPT_LOCATIONS
+CREATE TABLE dept_locations(
+dnumber	   INT(1) NOT NULL,
+dlocation   VARCHAR(15) NOT NULL,
+PRIMARY KEY (dnumber, dlocation),
+FOREIGN KEY (dnumber) REFERENCES department(dnumber));
+INSERT INTO dept_locations VALUES (1,'HOUSTON');
+INSERT INTO dept_locations VALUES (4,'STAFFORD');
+INSERT INTO dept_locations VALUES (5,'BELLAIRE');
+INSERT INTO dept_locations VALUES (5,'SUGARLAND');
+INSERT INTO dept_locations VALUES (5,'HOUSTON');
+# Creating PROJECT
+create table project (
+pname  VARCHAR(15) NOT NULL,
+pnumber	  INT(2) NOT NULL,
+plocation  VARCHAR(15),
+dnum  INT(1) NOT NULL,
+PRIMARY KEY (pnumber),
+UNIQUE (pname),
+FOREIGN KEY (dnum) REFERENCES department(dnumber));
+INSERT INTO project VALUES ('PRODUCTX',1,'BELLAIRE',5);
+INSERT INTO project VALUES ('PRODUCTY',2,'SUGARLAND',5);
+INSERT INTO project VALUES ('PRODUCTZ',3,'HOUSTON',5);
+INSERT INTO project VALUES ('COMPUTERIZATION',10,'STAFFORD',4);
+INSERT INTO project VALUES ('REORGANIZATION',20,'HOUSTON',1);
+INSERT INTO project VALUES ('NEWBENEFITS',30,'STAFFORD',4);
+# Creating WORKS_ON
+create table works_on
+(essn  VARCHAR(9) NOT NULL,
+pno  INT(2) NOT NULL,
+hours  DECIMAL(3,1),
+PRIMARY KEY (essn, pno),
+FOREIGN KEY (essn) REFERENCES employee(ssn),
+FOREIGN KEY (pno) REFERENCES project(pnumber));
+INSERT INTO works_on VALUES ('123456789',1,32.5);
+INSERT INTO works_on VALUES ('123456789',2,7.5);
+INSERT INTO works_on VALUES ('666884444',3,40.0);
+INSERT INTO works_on VALUES ('453453453',1,20.0);
+INSERT INTO works_on VALUES ('453453453',2,20.0);
+INSERT INTO works_on VALUES ('333445555',2,10.0);
+INSERT INTO works_on VALUES ('333445555',3,10.0);
+INSERT INTO works_on VALUES ('333445555',10,10.0);
+INSERT INTO works_on VALUES ('333445555',20,10.0);
+INSERT INTO works_on VALUES ('999887777',30,30.0);
+INSERT INTO works_on VALUES ('999887777',10,10.0);
+INSERT INTO works_on VALUES ('987987987',10,35.0);
+INSERT INTO works_on VALUES ('987987987',30,5.0);
+INSERT INTO works_on VALUES ('987654321',30,20.0);
+INSERT INTO works_on VALUES ('987654321',20,15.0);
+INSERT INTO works_on VALUES ('888665555',20,null);
+commit;
+show tables;

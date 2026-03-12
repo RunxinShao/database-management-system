@@ -1,0 +1,30 @@
+SELECT count(*) FROM teacher 
+    WHERE tname LIKE 'B%';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
