@@ -1,13 +1,10 @@
 # Database Management System
 
-Coursework repository for DBMS materials and assignments.
+DBMS coursework repository.
 
 ## Structure
-- `homework7/` â€” Homework 7 solutions (Relational Algebra and Triggers)
-- `lab5/` â€” selected SQL files from Lab 5
-- `advanced_sql/` â€” selected SQL files from advanced SQL coursework
-- `course_materials/` â€” placeholder for non-sensitive course materials
-- `notes/` â€” notes and summaries
+- `lab/` ¡ª lab SQL files and related DBMS lab work
+- `homework/` ¡ª homework solutions and SQL/homework materials
 
 ## Notes
-This repo is organized to keep code/SQL under version control while excluding bulky binaries and personal course documents.
+This repo is intentionally kept simple and only preserves the two main coursework buckets requested.
