@@ -1,13 +1,4 @@
 *.zip
-*.pdf
-*.doc
-*.docx
-*.ppt
-*.pptx
-*.jpg
-*.jpeg
-*.png
-*.svg
 *.mwb
 __pycache__/
 *.pyc
