@@ -16,8 +16,4 @@ DBMS coursework repository.
 - `lab/lab2/` — Lab 2 materials
 - `lab/lab5/` — Lab 5 SQL files and related DBMS lab work
 
-## Convention
-The top-level layout stays as `homework/` and `lab/`. Numbered assignments and labs are grouped into their corresponding subfolders, while other DBMS course materials are placed under the most relevant `homework/` subfolder without changing the top-level layout.
 
-## Exclusions
-Redundant compressed archives and temporary/lock files are intentionally excluded from this repository snapshot.
