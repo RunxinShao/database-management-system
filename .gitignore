@@ -1,6 +1,0 @@
-*.zip
-*.mwb
-__pycache__/
-*.pyc
-*.tmp
-~$*

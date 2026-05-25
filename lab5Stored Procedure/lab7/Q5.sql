@@ -1,0 +1,9 @@
+DELIMITER $$
+CREATE PROCEDURE my_procedure_User_Variables()
+BEGIN   
+SET @x = 15;       
+SET @y = 10;       
+SELECT @x, @y, @x-@y;   
+END$$
+DELIMITER ;
+CALL my_procedure_User_Variables();

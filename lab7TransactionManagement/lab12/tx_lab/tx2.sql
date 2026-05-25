@@ -1,0 +1,8 @@
+-- Lab3: Tx 2 on mysql
+-- Jeongkyu Lee
+SET AUTOCOMMIT = 0
+-- Tx 1: UPDATE ACCT SET BAL = 100 WHERE ID = ‘A’;
+SELECT * FROM ACCT;
+COMMIT;
+SELECT * FROM ACCT;
+

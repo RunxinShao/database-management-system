@@ -1,0 +1,4 @@
+DELIMITER $$
+CREATE PROCEDURE job_data()
+SELECT * FROM jobs; $$
+DELIMITER ;

@@ -1,0 +1,10 @@
+-- Lab1: Read Uncommitted- Tx 1 on mysql
+-- Jeongkyu Lee
+SET AUTOCOMMIT = 0
+SELECT * FROM ACCT;
+UPDATE ACCT SET BAL = 200 WHERE ID = 'A';
+SELECT * FROM ACCT;
+-- Tx 2: SELECT * FROM ACCT;
+ROLLBACK;;
+SELECT * FROM ACCT;
+-- Tx 2: SELECT * FROM ACCT;

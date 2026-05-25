@@ -1,0 +1,9 @@
+-- Lab1: Create sanjose DB on mysql
+-- Jeongkyu Lee
+CREATE DATABASE sanjose ;
+USE sanjose;
+CREATE TABLE ACCT ( ID  VARCHAR(10), BAL INT);
+INSERT INTO ACCT VALUES(‘A’, 100);
+INSERT INTO ACCT VALUES(‘B’, 1000);
+COMMIT; 
+

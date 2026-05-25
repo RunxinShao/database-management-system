@@ -1,0 +1,8 @@
+DELIMITER $$
+CREATE PROCEDURE my_proc_OUT (OUT highest_salary INT)
+BEGIN
+SELECT MAX(MAX_SALARY) INTO highest_salary FROM jobs;
+END$$
+DELIMITER ;
+CALL my_proc_OUT(@M);
+SELECT @M;
