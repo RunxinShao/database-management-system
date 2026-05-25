@@ -37,6 +37,6 @@ CS5200 DBMS coursework repository.
 
 `slides/` holds lecture slides for all modules: ER/EER modeling, SQL, relational algebra, normalization, disk storage, query processing, transaction management, and NoSQL.
 
-### Project
+### Project(unfinished)
 
 `AI_API_Gateway_Project/` is the semester group project — an AI API Gateway built in Java (Maven), deployed on GCP, with three project phases and a UML use-case diagram.
